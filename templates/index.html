@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      background-color: black;
+      overflow-x: hidden;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: 43px;
+    }
+
+    #btn {
+      background-color: #0093E9;
+      background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+      color: white;
+      font-weight: 700;
+      padding: 1%;
+      font-size: 23px;
+      text-align: center;
+      position: relative;
+      left: 237px;
+      top: 7px;
+      margin-bottom: 26px;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job-News</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+<body>
+  <marquee scrollamount="20" width="100%" direction="right" height="100px" style="font-size: larger; color:aliceblue; font-weight:800">
+    Download this by scrolling down and clicking the Download Button
+  </marquee>
+  <div class="mb-10 top-1 w-screen flex flex-col justify-center items-center">
+    <!-- <img src="../static/image/logo.png" class="w-64 h-64" alt="Logo Image"> -->
+  </div>
+  <div class="bottom-6 m-auto relative" id="container" style="width:614px; height:700px;">
+    <img src="../static/images/1.jpg" id="bg1" width="614px" height="700px">
+    <span class=" font-mono text-lg absolute text-white whitespace-pre-line text-justify" id="News"
+      style="width: 550px; top: 120px; left: 40px; line-height: 2em;">
+      {{News|safe}}
+    </span>
+    <button id="btn" onclick="download()">Download</button>
+    <br>
+  </div>
+
+
+  <script src="/static/js/h2c.min.js"></script>
+  <script>
+    function download() {
+      html2canvas(document.getElementById("container"),{ height: 1080, width: 600 }).then(canvas => {
+        //document.body.appendChild(canvas);
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = 'somefilename.jpg';
+        a.click();
+      });
+    }
+  </script>
+</body>
+
+</html>
